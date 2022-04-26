@@ -19,8 +19,7 @@ Aluno criarAluno(int a, char* b, unsigned short c){
 }
 typedef No noRaiz;
 noRaiz criarArvore();
-int inserir(noRaiz No, Aluno A);
-int inserirEmLote(noRaiz, Aluno*, int);
+int inserir(noRaiz No, Aluno x);
 int main(){
 	int id;
 	char nome[10];
@@ -32,21 +31,21 @@ int main(){
     raiz->esq = 0;
     raiz->dir = 0;
     raiz->A = K;
-	printf("%d %s %2.f", raiz->A->id, raiz->A->nome, raiz->A->nota);
+	printf("%d %s %2.f \n", raiz->A->id, raiz->A->nome, raiz->A->nota);
 	inserir(raiz, K);
 	
 	return 0;
 	
    
 }
-int inserir(noRaiz No, Aluno A){
+int inserir(noRaiz No, Aluno x){
     if(No == NULL){
-		No = criarArvore(A);
-	}
-	else if(A->id < No->A->id){
-	 	No->esq = A;
-	}else if(A->id > No->A->id){
-	 	No->dir = A;
-	}
+        No = criarArvore();
+    }
+    else if(x->id < No->A->id){
+        No->esq->A = x;
+    }else if(x->id > No->A->id){
+        No->dir->A = x;
+    }
    return 0;
 }
