@@ -18,7 +18,17 @@ Aluno criarAluno(int a, char* b, unsigned short c){
     return A;
 }
 typedef No noRaiz;
-noRaiz criarArvore();
+noRaiz criarArvore(noRaiz No,Aluno x){
+  if(x != NULL){
+     if(x->id < No->A->id){
+        No->esq->A = x;
+    }else if(x->id > No->A->id){
+        No->dir->A = x;
+    }
+  }
+  return 0;
+}
+
 int inserir(noRaiz No, Aluno x);
 int main(){
 	int id;
@@ -31,7 +41,7 @@ int main(){
     raiz->esq = 0;
     raiz->dir = 0;
     raiz->A = K;
-	printf("%d %s %2.f \n", raiz->A->id, raiz->A->nome, raiz->A->nota);
+	printf("%d %s %2.f", raiz->A->id, raiz->A->nome, raiz->A->nota);
 	inserir(raiz, K);
 	
 	return 0;
@@ -40,12 +50,8 @@ int main(){
 }
 int inserir(noRaiz No, Aluno x){
     if(No == NULL){
-        No = criarArvore();
+        No = criarArvore(No, x);
     }
-    else if(x->id < No->A->id){
-        No->esq->A = x;
-    }else if(x->id > No->A->id){
-        No->dir->A = x;
-    }
+    
    return 0;
 }
