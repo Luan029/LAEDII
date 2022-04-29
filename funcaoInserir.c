@@ -19,6 +19,7 @@ Aluno criarAluno(int a, char* b, unsigned short c){
 }
 typedef No noRaiz;
 noRaiz criarArvore(noRaiz No,Aluno x){
+    
   if(x != NULL){
      if(x->id < No->A->id){
         No->esq->A = x;
