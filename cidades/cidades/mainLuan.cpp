@@ -21,7 +21,7 @@ int main(){
     int c;
     float la;
     float lg;
-    int N = 5;
+    int N = 9152;
     double cidLa[N];
     double cidLg[N];
 
@@ -86,10 +86,35 @@ int main(){
     media = (float) Dtotal / (float) cont; //Ja a media, 
     //rotas();
     float m = grafo[pMaiorI*N + pMaiorJ];
+    float cidadesPorcento=(80*Dtotal)/100;
+    int contCidades=0;
+    int contDistancia=0;
+    int contRepetido = 0;
+    int cidadeI = 0;
+    int cidadeJ = 1;
+    while (contDistancia != cidadesPorcento){
+        for (int i = 0; i < N; i++){
+            for (int j = i+1; j < N; j++){
+                grafo[i*N + j] = sqrt(pow(cidLa[i] - cidLa[j], 2) + 
+                pow(cidLg[i] - cidLg[j], 2));
+                if(grafo[i*N + j] != 0){
+                    contCidades++;
+                    contDistancia += grafo[i*N +j];
+                }
+                cidadeI=i;
+                cidadeJ=j;
+                if(cidadeI==cidadeJ){
+                    contRepetido++; 
+                }
+           
+          }
+      }
+    }
+    printf("O numero de cidades %d",contRepetido);
+    printf("A quantidades de cidades eh %d",contCidades);
     printf("A distancia total eh: %2.f \n", Dtotal);
     printf("A maior total eh: %2.f \n", maior);
     printf("A media total eh: %2.f \n", media);
     printf("A menor total eh: %2.f \n", menor);
     
-
 }
